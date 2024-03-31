@@ -1,14 +1,14 @@
-# Default values for asam.
+# Default values for test.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: 177290857852.dkr.ecr.eu-south-2.amazonaws.com/odinala
+  repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "coming-soon"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -41,24 +41,25 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 3000
+  port: 80
 
-#ingress:
- # enabled: false
-  #className: ""
- # annotations: {}
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  #hosts:
-   # - host: argocd-prod.moeedc.ng
-    #  paths:
-     #   - path: /
-          #pathType: ImplementationSpecific
-  #tls: []
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
 
+resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -69,25 +70,20 @@ service:
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
-resources:
-  requests:
-    cpu: "30m"
-    memory: "105Mi"
-  limits:
-    cpu: "30m"
-    memory: "105Mi"
-  
+
 livenessProbe:
-  tcpSocket:
-    port: 3000
-  failureThreshold:  1
-  initialDelaySeconds: 5
-  periodSeconds: 10
-  
+  httpGet:
+    path: /
+    port: http
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
-  maxReplicas: 2
+  maxReplicas: 100
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 

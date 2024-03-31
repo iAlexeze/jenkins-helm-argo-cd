@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/iAlexeze/jenkins-helm-argo-cd.git
     targetRevision: HEAD
-    path: asam
+    path: test
   destination: 
     server: https://kubernetes.default.svc
     namespace: ialex
