@@ -8,7 +8,7 @@ image:
   repository: 177290857852.dkr.ecr.eu-south-2.amazonaws.com/odinala
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "gw-dms-mol-portal-1"
+  tag: "coming-soon"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -77,12 +77,12 @@ resources:
     cpu: "15m"
     memory: "105Mi"
   
-livenessProbe:
-  tcpSocket:
-    port: 5980
-  failureThreshold:  1
-  initialDelaySeconds: 5
-  periodSeconds: 10
+#livenessProbe:
+ # tcpSocket:
+  #  port: 5980
+  #failureThreshold:  1
+  #initialDelaySeconds: 5
+  #periodSeconds: 10
   
 autoscaling:
   enabled: true
