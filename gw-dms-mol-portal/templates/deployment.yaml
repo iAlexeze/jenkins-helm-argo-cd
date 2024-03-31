@@ -1,56 +1,56 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: gw-dms-mol-portal
-  namespace: mol-prod
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      service: gw-dms-mol-portal
-  template:
-    metadata:
-      labels:
-        service: gw-dms-mol-portal
-        access: gw-mol
-    spec:
-      containers:
-      - image: 177290857852.dkr.ecr.eu-south-2.amazonaws.com/odinala:gw-dms-mol-portal-1
-        name: gw-dms-mol-portal
-        imagePullPolicy: Always
-        envFrom:
-        - configMapRef:
-            name: mol-backend
-        - configMapRef:
-            name: mol-gateway
-        ports:
-        - containerPort: 5980
-        resources:
-          requests:
-            cpu: "15m"
-            memory: "105Mi"
-          limits:
-            cpu: "15m"
-            memory: "105Mi"
-        startupProbe:
-          tcpSocket:
-            port: 5980
-          failureThreshold:  30
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          tcpSocket:
-            port: 5980
-          failureThreshold:  1
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        readinessProbe:
-          tcpSocket:
-            port: 5980
-          failureThreshold:  1
-          initialDelaySeconds: 5
-          periodSeconds: 10
-      restartPolicy: Always
-status: {}
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: gw-dms-mol-portal
+#   namespace: mol-prod
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       service: gw-dms-mol-portal
+#   template:
+#     metadata:
+#       labels:
+#         service: gw-dms-mol-portal
+#         access: gw-mol
+#     spec:
+#       containers:
+#       - image: 177290857852.dkr.ecr.eu-south-2.amazonaws.com/odinala:gw-dms-mol-portal-1
+#         name: gw-dms-mol-portal
+#         imagePullPolicy: Always
+#         envFrom:
+#         - configMapRef:
+#             name: mol-backend
+#         - configMapRef:
+#             name: mol-gateway
+#         ports:
+#         - containerPort: 5980
+#         resources:
+#           requests:
+#             cpu: "15m"
+#             memory: "105Mi"
+#           limits:
+#             cpu: "15m"
+#             memory: "105Mi"
+#         startupProbe:
+#           tcpSocket:
+#             port: 5980
+#           failureThreshold:  30
+#           initialDelaySeconds: 5
+#           periodSeconds: 10
+#         livenessProbe:
+#           tcpSocket:
+#             port: 5980
+#           failureThreshold:  1
+#           initialDelaySeconds: 5
+#           periodSeconds: 10
+#         readinessProbe:
+#           tcpSocket:
+#             port: 5980
+#           failureThreshold:  1
+#           initialDelaySeconds: 5
+#           periodSeconds: 10
+#       restartPolicy: Always
+# status: {}
 
 

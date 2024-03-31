@@ -1,16 +1,16 @@
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: gw-dms-mol-portal
-  namespace: mol-prod
-spec:
-  ports:
-    - name: gw-dms-mol-portal-port
-      protocol: TCP
-      port: 5980
-      targetPort: 5980
-  selector:
-    service: gw-dms-mol-portal
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: gw-dms-mol-portal
+#   namespace: mol-prod
+# spec:
+#   ports:
+#     - name: gw-dms-mol-portal-port
+#       protocol: TCP
+#       port: 5980
+#       targetPort: 5980
+#   selector:
+#     service: gw-dms-mol-portal
 
 

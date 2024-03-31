@@ -1,15 +1,15 @@
-apiVersion: k8s.nginx.org/v1
-kind: VirtualServer
-metadata:
-  name: gw-dms-mol-portal-virtualserver
-  namespace: mol-prod
-spec:
-  host: gw-dms-mol-portal-api.moeedc.ng
-  upstreams:
-    - name: gw-dms-mol-portal
-      service: gw-dms-mol-portal
-      port: 5980
-  routes:
-  - path: /
-    action:
-      pass: gw-dms-mol-portal
+# apiVersion: k8s.nginx.org/v1
+# kind: VirtualServer
+# metadata:
+#   name: gw-dms-mol-portal-virtualserver
+#   namespace: mol-prod
+# spec:
+#   host: gw-dms-mol-portal-api.moeedc.ng
+#   upstreams:
+#     - name: gw-dms-mol-portal
+#       service: gw-dms-mol-portal
+#       port: 5980
+#   routes:
+#   - path: /
+#     action:
+#       pass: gw-dms-mol-portal

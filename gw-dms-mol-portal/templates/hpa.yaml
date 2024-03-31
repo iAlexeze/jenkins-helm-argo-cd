@@ -1,15 +1,15 @@
----
-apiVersion: autoscaling/v1
-kind: HorizontalPodAutoscaler
-metadata:
-  name: gw-dms-mol-portal
-  namespace: mol-prod
-spec:
-  maxReplicas: 3
-  minReplicas: 1
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: gw-dms-mol-portal
-  targetCPUUtilizationPercentage: 70
+# ---
+# apiVersion: autoscaling/v1
+# kind: HorizontalPodAutoscaler
+# metadata:
+#   name: gw-dms-mol-portal
+#   namespace: mol-prod
+# spec:
+#   maxReplicas: 3
+#   minReplicas: 1
+#   scaleTargetRef:
+#     apiVersion: apps/v1
+#     kind: Deployment
+#     name: gw-dms-mol-portal
+#   targetCPUUtilizationPercentage: 70
 
