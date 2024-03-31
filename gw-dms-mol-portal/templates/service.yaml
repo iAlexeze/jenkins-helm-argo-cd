@@ -1,15 +1,16 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "gw-dms-mol-portal.fullname" . }}
-  labels:
-    {{- include "gw-dms-mol-portal.labels" . | nindent 4 }}
+  name: gw-dms-mol-portal
+  namespace: mol-prod
 spec:
-  type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
+    - name: gw-dms-mol-portal-port
       protocol: TCP
-      name: http
+      port: 5980
+      targetPort: 5980
   selector:
-    {{- include "gw-dms-mol-portal.selectorLabels" . | nindent 4 }}
+    service: gw-dms-mol-portal
+
+
