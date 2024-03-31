@@ -77,14 +77,6 @@ resources:
     cpu: "15m"
     memory: "105Mi"
   
-
-startupProbe:
-  tcpSocket:
-    port: 5980
-  failureThreshold:  30
-  initialDelaySeconds: 5
-  periodSeconds: 10
-  
 livenessProbe:
   tcpSocket:
     port: 5980
@@ -92,13 +84,6 @@ livenessProbe:
   initialDelaySeconds: 5
   periodSeconds: 10
   
-readinessProbe:
-  tcpSocket:
-    port: 5980
-  failureThreshold:  1
-  initialDelaySeconds: 5
-  periodSeconds: 10
-
 autoscaling:
   enabled: true
   minReplicas: 1
