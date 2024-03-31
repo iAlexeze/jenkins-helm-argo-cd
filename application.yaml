@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gw-dms-mol-portal
+  name: asam
   namespace: argocd
 spec:
   project: default
@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/iAlexeze/jenkins-helm-argo-cd.git
     targetRevision: HEAD
-    path: gw-dms-mol-portal
+    path: asam
   destination: 
     server: https://kubernetes.default.svc
     namespace: ialex
